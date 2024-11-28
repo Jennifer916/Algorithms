@@ -14,6 +14,7 @@ public class Algorithms {
         int greatestnum= greatestnum();
         int leastnum= leastnum();
         int sum = sum();
+        double mean = mean();
         System.out.println(odds);
       
         System.out.println(evens);
@@ -27,6 +28,8 @@ public class Algorithms {
         System.out.println(leastnum);
 
         System.out.println(sum);
+
+        System.out.println(mean);
         s.close();
         
     }
@@ -94,5 +97,46 @@ public class Algorithms {
         }
         return sum;
     }
+    public static double mean() throws FileNotFoundException{
+        s = new Scanner(f);
+        double c = 0.0; 
+        int count=0;
+        while (s.hasNext()) {
+            c+=s.nextInt();
+                count ++;
+        }
+        double result = c/count;
+        return result;
+       
+    }
+    public static double mode() throws FileNotFoundException{
+        s = new Scanner(f);
+        int [] [] nums ={};
+        int i = 0;
+        while (s.hasNext()) {
+        i=s.nextnum();
+        if (nextnum>nums[i]){
+            nums[i+1]=nextnum;
+        }
+        }
+        int mode= 0;
+        int great = 0;
+        int num= 0;
+        for (int h= 0; h< nums[].length()-1;h++){
+            int mcount=0;
+            if (nums[h]==nums[h+1]){
+                mcount++;
+                if (mcount>great){
+                    great= mcount ;
+                    mode= nums[h];
+                }
+            }
+            
+
+        }
+        return num;
+       
+    }
+
  
 }
