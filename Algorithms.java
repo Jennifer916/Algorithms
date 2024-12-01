@@ -1,6 +1,11 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 
 public class Algorithms {
     private static File f;
@@ -15,6 +20,7 @@ public class Algorithms {
         int leastnum= leastnum();
         int sum = sum();
         double mean = mean();
+        int mode = mode();
         System.out.println(odds);
       
         System.out.println(evens);
@@ -30,7 +36,10 @@ public class Algorithms {
         System.out.println(sum);
 
         System.out.println(mean);
+
+        System.out.println(mode);
         s.close();
+
         
     }
 
@@ -109,34 +118,36 @@ public class Algorithms {
         return result;
        
     }
-    public static double mode() throws FileNotFoundException{
-        s = new Scanner(f);
-        int [] [] nums ={};
-        int i = 0;
-        while (s.hasNext()) {
-        i=s.nextnum();
-        if (nextnum>nums[i]){
-            nums[i+1]=nextnum;
-        }
-        }
-        int mode= 0;
-        int great = 0;
-        int num= 0;
-        for (int h= 0; h< nums[].length()-1;h++){
-            int mcount=0;
-            if (nums[h]==nums[h+1]){
-                mcount++;
-                if (mcount>great){
-                    great= mcount ;
-                    mode= nums[h];
-                }
-            }
-            
 
-        }
-        return num;
-       
+    public static int mode() throws FileNotFoundException{
+       s=new Scanner(f);
+       List<Integer> nums
+       = new ArrayList<Integer>();
+   Scanner sc = new Scanner(new FileReader("Numbers.txt"))
+                    .useDelimiter(",\\s*");
+   Integer num;
+   while (sc.hasNext()) {
+       num = sc.nextInt();
+       nums.add(num);
+   }
+   Integer[] array
+       = nums.toArray(new Integer[0]);
     }
-
- 
+        private int[] nums; 
+        int maxCount=0;
+        int mode = nums[0] ;
+        for (int i = 0; i < array.length; i++) {
+        int value = nums[i];
+        int count = 1;
+        for (int j = 0; j < nums.length; j++) {
+            if (nums[j] == value)
+                count++;
+            if (count > maxCount) {
+                mode = value;
+                maxCount = count;
+            }
+        }
+    }
+    return mode;
+}
 }
